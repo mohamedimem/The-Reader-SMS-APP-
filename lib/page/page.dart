@@ -1,23 +1,28 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:dart_telegram_bot/dart_telegram_bot.dart';
 import 'package:dart_telegram_bot/telegram_entities.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:proxyapp/auth/application/auth_notifier.dart';
 import 'package:proxyapp/auth/shared/providers.dart';
-import 'package:proxyapp/core/constant.dart';
 import 'package:proxyapp/page/model/services.dart';
 import 'package:telephony/telephony.dart';
+import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 
 @RoutePage()
-class GreenHomePage extends StatefulWidget {
+class GreenHomePage extends ConsumerStatefulWidget {
   const GreenHomePage({super.key});
 
   @override
-  State<GreenHomePage> createState() => _GreenHomePageState();
+  GreenHomePageState createState() => GreenHomePageState();
 }
 
 final mockService = MockServices();
@@ -62,13 +67,17 @@ final bot = Bot(
   onStartFailed: (bot, e, s) => print('Start failed'),
 );
 
-class _GreenHomePageState extends State<GreenHomePage> {
+class GreenHomePageState extends ConsumerState<GreenHomePage> {
+  String notificationChannelId = 'my_foreground';
+
+// this will be used for notification id, So you can update your custom notification with this id.
+  int notificationId = 888;
+
   String _message = "";
 
   @override
   void initState() {
     super.initState();
-
     initPlatformState();
   }
 

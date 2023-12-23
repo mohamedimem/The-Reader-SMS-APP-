@@ -125,7 +125,6 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: emailToString, password: passwordToString);
       authManager.signIn();
-      var firebaseVar = await _firebaseAuth;
 
       await saveUid(await findDocumentIdByEmail(emailToString));
 

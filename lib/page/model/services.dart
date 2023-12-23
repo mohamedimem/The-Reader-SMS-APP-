@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:proxyapp/firebase_options.dart';
 
@@ -9,7 +7,7 @@ final FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 Future<String?> getUid() async {
   var x = await secureStorage.read(key: 'uid');
-  print("this is our $x" ?? 'null uid');
+  print("this is our $x");
   return await secureStorage.read(key: 'uid');
 }
 
@@ -63,8 +61,6 @@ class RealtimeDatabase {
   }
 
   static Future<Map<String, dynamic>> read({required String? userID}) async {
-    final uid = await getUid();
-
     try {
       DocumentReference _documentReference =
           FirebaseFirestore.instance.collection('users').doc('$userID');

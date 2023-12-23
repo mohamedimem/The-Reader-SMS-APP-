@@ -65,10 +65,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<void> signOut() async {
     final failureOrSuccess = await _firebaseAuthFacade.signOut();
     state = failureOrSuccess.fold((l) {
-      print("AuthState.failure()");
       return AuthState.failure();
     }, (r) {
-      print("AuthState.unauthenticated()");
       return AuthState.unauthenticated();
     });
     print('---------------state------------');

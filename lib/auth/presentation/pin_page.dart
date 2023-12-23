@@ -1,14 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:proxyapp/auth/application/auth_notifier.dart';
-import 'package:proxyapp/auth/domain/email_adress.dart';
-import 'package:proxyapp/auth/domain/failure/auth_failure.dart';
-import 'package:proxyapp/auth/domain/password.dart';
 import 'package:proxyapp/auth/shared/providers.dart';
-import 'package:validators/validators.dart' as validator;
 
 @RoutePage()
 class PinPage extends StatefulWidget {
@@ -87,9 +82,7 @@ class _PinPageState extends State<PinPage> {
                           try {
                             var state =
                                 await firebaseauth.signInWithPin(nom.text);
-                            print("-----");
-                            print(state);
-                            print("-----");
+
                             if (state == AuthState.failure()) {
                               ScaffoldMessenger.of(context)
                                 ..hideCurrentSnackBar()

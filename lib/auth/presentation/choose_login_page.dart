@@ -1,11 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:proxyapp/auth/presentation/login_page.dart';
 import 'package:proxyapp/auth/presentation/pin_page.dart';
-import 'package:proxyapp/auth/shared/providers.dart';
-import 'package:proxyapp/core/presentation/routes/app_router.dart';
 
 @RoutePage()
 class ChooseLoginPage extends StatefulWidget {

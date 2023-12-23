@@ -8,7 +8,6 @@ class EmailAdress extends ValueObject<String> {
   factory EmailAdress(String input) {
     // ignore: unnecessary_null_comparison
     input = input.trim();
-    assert(input != null);
     return EmailAdress._(
       validateEmailAddress(input),
     );

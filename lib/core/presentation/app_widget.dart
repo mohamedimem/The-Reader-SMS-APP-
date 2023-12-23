@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:proxyapp/auth/application/auth_notifier.dart';
 import 'package:proxyapp/auth/shared/providers.dart';
 import 'package:proxyapp/core/presentation/routes/app_router.dart';
-import 'package:proxyapp/core/presentation/routes/app_router.dart';
 
 final initializationProvider = FutureProvider((ref) async {
   final authNotifier = ref.read(authNotifierProvider.notifier);

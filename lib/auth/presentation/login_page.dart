@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:validators/validators.dart' as validator;
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
@@ -10,7 +9,6 @@ import 'package:proxyapp/auth/application/auth_notifier.dart';
 import 'package:proxyapp/auth/domain/email_adress.dart';
 import 'package:proxyapp/auth/domain/password.dart';
 import 'package:proxyapp/auth/shared/providers.dart';
-import 'package:proxyapp/core/presentation/routes/app_router.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -26,8 +24,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController password = TextEditingController();
   bool _wrongEmail = false;
   bool _wrongPassword = false;
-  String _emailText = 'Please use a valid email';
-  String _passwordText = 'Please use a strong password';
 
   final snackBartrue = SnackBar(
     /// need to set following properties for best effect of awesome_snackbar_content

@@ -3,7 +3,6 @@ import 'package:proxyapp/auth/infrastructure/credentials_storage/secure_credenti
 import 'package:proxyapp/auth/infrastructure/firebase_facade.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final firebaseProvider = Provider<FirebaseAuth>((ref) {
