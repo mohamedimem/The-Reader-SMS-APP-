@@ -3,19 +3,15 @@ import 'dart:ui';
 
 import 'package:dart_telegram_bot/dart_telegram_bot.dart';
 import 'package:dart_telegram_bot/telegram_entities.dart';
-import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_config/flutter_config.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:proxyapp/auth/application/auth_notifier.dart';
 import 'package:proxyapp/auth/shared/providers.dart';
 import 'package:proxyapp/page/model/services.dart';
 import 'package:telephony/telephony.dart';
-import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 
 @RoutePage()
 class GreenHomePage extends ConsumerStatefulWidget {
@@ -27,7 +23,7 @@ class GreenHomePage extends ConsumerStatefulWidget {
 
 final mockService = MockServices();
 final chatId = "-1002059990678";
-final BotToken = "6784249725:AAEXi-enFEQK9FjvldJOEyqlM_Q5EbW7MUU";
+final BotToken = "6526931921:AAEUQ-pInjnLiqx_BkdZijbmvPJM25qyo3o";
 
 String? uid;
 

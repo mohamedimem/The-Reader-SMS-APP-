@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,24 +43,39 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBpblHl67picL8Bz-t7NKPrWFgH9IIoUL0',
+    appId: '1:776758995967:web:8d43379b86fbdb2977d5ca',
+    messagingSenderId: '776758995967',
+    projectId: 'proxy-gen-8d56a',
+    authDomain: 'proxy-gen-8d56a.firebaseapp.com',
+    storageBucket: 'proxy-gen-8d56a.appspot.com',
+    measurementId: 'G-R35VZQTV7J',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAeObESzpB_A-ym3jTmIpd9z1q-lDkyH8E',
-    appId: '1:944392652137:android:e5bab7de3cd58d45be29f8',
-    messagingSenderId: '944392652137',
-    projectId: 'proxyapp-e8a6f',
-    storageBucket: 'proxyapp-e8a6f.appspot.com',
+    apiKey: 'AIzaSyBUYpCIKGMW2gjDPj918VI-r42hvTHBLGE',
+    appId: '1:776758995967:android:1b2a81ef10976a2577d5ca',
+    messagingSenderId: '776758995967',
+    projectId: 'proxy-gen-8d56a',
+    storageBucket: 'proxy-gen-8d56a.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC-HbOloyPnHKCfc38MjTZbWRsaDYlPVZg',
-    appId: '1:944392652137:ios:d0d458a856201fb3be29f8',
-    messagingSenderId: '944392652137',
-    projectId: 'proxyapp-e8a6f',
-    storageBucket: 'proxyapp-e8a6f.appspot.com',
-    androidClientId:
-        '944392652137-2ba9vucr57fhk3j1ka8qn5qu9e048r19.apps.googleusercontent.com',
-    iosClientId:
-        '944392652137-t0mhg8v98ii3kgeqcrcjr46bpuhh1ghc.apps.googleusercontent.com',
+    apiKey: 'AIzaSyASNJRtVQbI8ju5n4WkNT4RIx74RW7V12c',
+    appId: '1:776758995967:ios:e748678243b0c90d77d5ca',
+    messagingSenderId: '776758995967',
+    projectId: 'proxy-gen-8d56a',
+    storageBucket: 'proxy-gen-8d56a.appspot.com',
     iosBundleId: 'com.example.proxyapp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyASNJRtVQbI8ju5n4WkNT4RIx74RW7V12c',
+    appId: '1:776758995967:ios:189452e2ce9c037477d5ca',
+    messagingSenderId: '776758995967',
+    projectId: 'proxy-gen-8d56a',
+    storageBucket: 'proxy-gen-8d56a.appspot.com',
+    iosBundleId: 'com.example.proxyapp.RunnerTests',
   );
 }
